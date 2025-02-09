@@ -43,3 +43,9 @@ Nella cartella `script` sono presenti due script per l'acquisizione ed elaborazi
 ## Licenza
 
 I dati sono rilasciati con licenza [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it).
+
+## Se usi questi dati
+
+I dati sono rilasciati con licenza [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it), quindi sei libero di utilizzarli per qualsiasi scopo, a patto di **citare questa fonte**.
+
+Quando li usi includi per favore la dicitura "dati estratti dall'[associazione onData](https://www.ondata.it/), a partire dalle [API dell'ANNCSU](https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?help_show)".
