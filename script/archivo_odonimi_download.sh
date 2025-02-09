@@ -7,6 +7,7 @@ set -o pipefail
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+mkdir -p "${folder}"/tmp
 mkdir -p "${folder}"/tmp/liste_odonimi
 mkdir -p "${folder}"/../rawdata
 
@@ -33,7 +34,7 @@ cat "${folder}"/tmp/download_list.txt | parallel --colsep '\t' -j4 --bar '
   regione={1}
   codice_belfiore={2}
   folder="'"${folder}"'"
-  
+
   if [ ! -f "${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json ]; then
     curl -sS -X GET "https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?resource=odonimi&codicecomune=$codice_belfiore&denominazione=%20%20%20" >"${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json
 
