@@ -65,11 +65,11 @@ duckdb -c "COPY (
 mlr --c2n cut -f IDREGIONE then uniq -a "${folder}"/../risorse/comuniANPR_ISTAT.csv >"${folder}"/tmp/lista_regioni.txt
 
 # Crea file Parquet separati per ogni regione
-# Crea file CSV compressi separati per ogni regione
 cat "${folder}"/tmp/lista_regioni.txt | while read -r regione; do
   duckdb -c "COPY (select * from '${folder}/../output/odonimi.parquet' where codice_regione like '19'order by codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi_${regione}.parquet' (FORMAT 'parquet', COMPRESSION 'zstd', ROW_GROUP_SIZE 100_000);"
 done
 
+# Crea file CSV compressi separati per ogni regione
 cat "${folder}"/tmp/lista_regioni.txt | while read -r regione; do
   duckdb -c "COPY (select * from '${folder}/../output/odonimi.parquet' where codice_regione like '19'order by codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi_${regione}.csv.gz';"
 done
