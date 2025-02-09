@@ -4,6 +4,8 @@
 
 Questo repository contiene l'archivio completo degli odonimi italiani - i "nomi delle strade" -  estratti dalle API dell'Archivio Nazionale dei Numeri Civici e delle Strade Urbane (ANNCSU), il 9 febbraio 2025.
 
+I nomi delle strade raccontano la **storia** e le **scelte culturali**, **politiche**, **religiose** e **sociali** che hanno plasmato e plasmano le nostre città.
+
 URL utili:
 
 - URL API https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?help_show
