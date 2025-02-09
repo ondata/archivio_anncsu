@@ -8,17 +8,17 @@
 
 # Configurazione ambiente
 #set -x  # Debug: mostra comandi eseguiti (commentato)
-set -e  # Exit on error
-set -u  # Exit on undefined variables
-set -o pipefail  # Exit on pipe failures
+set -e          # Exit on error
+set -u          # Exit on undefined variables
+set -o pipefail # Exit on pipe failures
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Crea directory necessarie
-mkdir -p "${folder}"/tmp  # File temporanei
-mkdir -p "${folder}"/tmp/liste_odonimi  # Liste odonimi
-mkdir -p "${folder}"/../rawdata  # Dati scaricati
-mkdir -p "${folder}"/../output  # Dati elaborati
+mkdir -p "${folder}"/tmp               # File temporanei
+mkdir -p "${folder}"/tmp/liste_odonimi # Liste odonimi
+mkdir -p "${folder}"/../rawdata        # Dati scaricati
+mkdir -p "${folder}"/../output         # Dati elaborati
 
 # Pulisci file temporaneo JSONL se esiste
 if [ -f "${folder}"/tmp.jsonl ]; then
@@ -66,10 +66,10 @@ mlr --c2n cut -f IDREGIONE then uniq -a "${folder}"/../risorse/comuniANPR_ISTAT.
 
 # Crea file Parquet separati per ogni regione
 cat "${folder}"/tmp/lista_regioni.txt | while read -r regione; do
-  duckdb -c "COPY (select * from '${folder}/../output/odonimi.parquet' where codice_regione like '19'order by codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi_${regione}.parquet' (FORMAT 'parquet', COMPRESSION 'zstd', ROW_GROUP_SIZE 100_000);"
+  duckdb -c "COPY (select * from '${folder}/../output/odonimi.parquet' where codice_regione like '$regione' order by codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi_${regione}.parquet' (FORMAT 'parquet', COMPRESSION 'zstd', ROW_GROUP_SIZE 100_000);"
 done
 
 # Crea file CSV compressi separati per ogni regione
 cat "${folder}"/tmp/lista_regioni.txt | while read -r regione; do
-  duckdb -c "COPY (select * from '${folder}/../output/odonimi.parquet' where codice_regione like '19'order by codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi_${regione}.csv.gz';"
+  duckdb -c "COPY (select * from '${folder}/../output/odonimi.parquet' where codice_regione like '$regione' order by codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi_${regione}.csv.gz';"
 done
