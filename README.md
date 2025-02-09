@@ -23,8 +23,10 @@ I dati sono disponibili nella cartella [`output`](output) e includono:
 - `odonimi_XX.csv.gz`: File CSV compressi separati per ogni regione (XX = codice regione)
 
 Ogni record contiene i campi originali delle API ANNCSU più due colonne aggiuntive:
-- `codice_belfiore`: Codice catastale del comune (codice Belfiore)
-- `codice_regione`: Codice ISTAT della regione
+- `codice_belfiore`: Codice catastale del comune (codice Belfiore);
+- `codice_regione`: Codice ISTAT della regione.
+
+Il significato del codice regione e codice Belfiore di ogni Comune, sono quelli presenti nel file [`comuniANPR_ISTAT.csv`](risorse/comuniANPR_ISTAT.csv), nelle rispettive colonne `IDREGIONE` e `CODCATASTALE`.
 
 ## Script di elaborazione
 
