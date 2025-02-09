@@ -1,3 +1,5 @@
+<a href="https://datibenecomune.substack.com/about"><img src="https://img.shields.io/badge/%F0%9F%99%8F-%23datiBeneComune-%23cc3232"/></a>
+
 # Elenco degli Odonimi dell'Archivio Nazionale dei Numeri Civici e delle Strade
 
 Questo repository contiene l'archivio completo degli odonimi italiani - dei "nomi delle strade" -  estratti dalle API dell'Archivio Nazionale dei Numeri Civici e delle Strade Urbane (ANNCSU) al 9 febbraio 2025.
@@ -13,8 +15,8 @@ URL utili:
 
 I dati sono disponibili nella cartella [`output`](output) e includono:
 
-- `odonimi.parquet`: File Parquet con tutti gli odonimi italiani
-- `odonimi.csv.gz`: File CSV compresso con tutti gli odonimi italiani
+- [`odonimi.parquet`](output/odonimi.parquet): File Parquet con tutti gli odonimi italiani
+- [`odonimi.csv.gz`](output/odonimi.csv.gz): File CSV compresso con tutti gli odonimi italiani
 - `odonimi_XX.parquet`: File Parquet separati per ogni regione (XX = codice regione)
 - `odonimi_XX.csv.gz`: File CSV compressi separati per ogni regione (XX = codice regione)
 
