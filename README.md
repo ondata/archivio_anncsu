@@ -2,7 +2,7 @@
 
 # Elenco degli Odonimi dell'Archivio Nazionale dei Numeri Civici e delle Strade
 
-Questo repository contiene l'archivio completo degli odonimi italiani - dei "nomi delle strade" -  estratti dalle API dell'Archivio Nazionale dei Numeri Civici e delle Strade Urbane (ANNCSU) al 9 febbraio 2025.
+Questo repository contiene l'archivio completo degli odonimi italiani - i "nomi delle strade" -  estratti dalle API dell'Archivio Nazionale dei Numeri Civici e delle Strade Urbane (ANNCSU), il 9 febbraio 2025.
 
 URL utili:
 
