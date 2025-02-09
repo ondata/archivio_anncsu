@@ -26,7 +26,7 @@ Ogni record contiene i campi originali delle API ANNCSU più due colonne aggiunt
 - `codice_belfiore`: Codice catastale del comune (codice Belfiore);
 - `codice_regione`: Codice ISTAT della regione.
 
-Il significato del codice regione e codice Belfiore di ogni Comune, sono quelli presenti nel file [`comuniANPR_ISTAT.csv`](risorse/comuniANPR_ISTAT.csv), nelle rispettive colonne `IDREGIONE` e `CODCATASTALE`.
+Il significato del codice regione e codice Belfiore di ogni Comune, sono quelli presenti nel file [`comuniANPR_ISTAT.csv`](risorse/comuniANPR_ISTAT.csv), nelle rispettive coppie di colonne `IDREGIONE` e `Denominazione Regione`, `CODCATASTALE` e `DENOMINAZIONE_IT`.
 
 ## Script di elaborazione
 
