@@ -28,7 +28,7 @@ Ogni record contiene i campi originali delle API ANNCSU più due colonne aggiunt
 
 ## Script di elaborazione
 
-Nella cartella `script` sono presenti due script per l'acquisizione ed elaborazione dei dati:
+Nella cartella [`script`](script) sono presenti due script per l'acquisizione ed elaborazione dei dati:
 
 1. `archivo_odonimi_download.sh`:
    - Scarica i dati odonomastici dalle API ANNCSU
