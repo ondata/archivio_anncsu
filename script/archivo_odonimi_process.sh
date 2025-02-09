@@ -1,22 +1,31 @@
 #!/bin/bash
 
-#set -x
-set -e
-set -u
-set -o pipefail
+# Script per l'elaborazione dei dati odonomastici scaricati
+# Requisiti:
+# - DuckDB per elaborazione dati
+# - Miller (mlr) per elaborazione CSV
+# - jq per elaborazione JSON
+
+# Configurazione ambiente
+#set -x  # Debug: mostra comandi eseguiti (commentato)
+set -e  # Exit on error
+set -u  # Exit on undefined variables
+set -o pipefail  # Exit on pipe failures
 
 folder="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-mkdir -p "${folder}"/tmp
-mkdir -p "${folder}"/tmp/liste_odonimi
-mkdir -p "${folder}"/../rawdata
-mkdir -p "${folder}"/../output
+# Crea directory necessarie
+mkdir -p "${folder}"/tmp  # File temporanei
+mkdir -p "${folder}"/tmp/liste_odonimi  # Liste odonimi
+mkdir -p "${folder}"/../rawdata  # Dati scaricati
+mkdir -p "${folder}"/../output  # Dati elaborati
 
-# se "${folder}"/tmp.jsonl esiste cancellalo
+# Pulisci file temporaneo JSONL se esiste
 if [ -f "${folder}"/tmp.jsonl ]; then
   rm "${folder}"/tmp.jsonl
 fi
 
+# Elabora ogni file JSON scaricato
 find ../rawdata/ -type f | while read -r file; do
   nome=$(basename "${file}" .json)
   codice_belfiore=$(echo "${nome}" | cut -d'_' -f2)
@@ -32,13 +41,31 @@ done
 
 mv "${folder}"/tmp.jsonl "${folder}"/../output/odonomi.jsonl
 
-duckdb -c "COPY (SELECT CAST(Progressivo_nazionale AS BIGINT) AS Progressivo_nazionale,* EXCLUDE(Progressivo_nazionale) FROM read_json_auto('${folder}/../output/odonomi.jsonl') order by codice_regione,codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi.parquet' (FORMAT 'parquet', COMPRESSION 'zstd', ROW_GROUP_SIZE 100_000);"
+# Converti JSONL in Parquet con DuckDB
+duckdb -c "COPY (
+  SELECT CAST(Progressivo_nazionale AS BIGINT) AS Progressivo_nazionale,
+         * EXCLUDE(Progressivo_nazionale)
+  FROM read_json_auto('${folder}/../output/odonomi.jsonl')
+  ORDER BY codice_regione, codice_belfiore, Progressivo_nazionale
+) TO '${folder}/../output/odonimi.parquet' (
+  FORMAT 'parquet',
+  COMPRESSION 'zstd',
+  ROW_GROUP_SIZE 100_000
+);"
 
-duckdb -c "COPY (SELECT CAST(Progressivo_nazionale AS BIGINT) AS Progressivo_nazionale,* EXCLUDE(Progressivo_nazionale) FROM read_json_auto('${folder}/../output/odonomi.jsonl') order by codice_regione,codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi.csv.gz';"
+# Converti JSONL in CSV compresso con DuckDB
+duckdb -c "COPY (
+  SELECT CAST(Progressivo_nazionale AS BIGINT) AS Progressivo_nazionale,
+         * EXCLUDE(Progressivo_nazionale)
+  FROM read_json_auto('${folder}/../output/odonomi.jsonl')
+  ORDER BY codice_regione, codice_belfiore, Progressivo_nazionale
+) TO '${folder}/../output/odonimi.csv.gz';"
 
-# estrai codici regioni Istat
+# Estrai codici regione ISTAT univoci
 mlr --c2n cut -f IDREGIONE then uniq -a "${folder}"/../risorse/comuniANPR_ISTAT.csv >"${folder}"/tmp/lista_regioni.txt
 
+# Crea file Parquet separati per ogni regione
+# Crea file CSV compressi separati per ogni regione
 cat "${folder}"/tmp/lista_regioni.txt | while read -r regione; do
   duckdb -c "COPY (select * from '${folder}/../output/odonimi.parquet' where codice_regione like '19'order by codice_belfiore,Progressivo_nazionale)  to '${folder}/../output/odonimi_${regione}.parquet' (FORMAT 'parquet', COMPRESSION 'zstd', ROW_GROUP_SIZE 100_000);"
 done
