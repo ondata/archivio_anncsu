@@ -40,10 +40,6 @@ Nella cartella `script` sono presenti due script per l'acquisizione ed elaborazi
    - Crea file separati per ogni regione
    - Richiede: duckdb, mlr (Miller), jq
 
-## Licenza
-
-I dati sono rilasciati con licenza [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it).
-
 ## Se usi questi dati
 
 I dati sono rilasciati con licenza [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it), quindi sei libero di utilizzarli per qualsiasi scopo, a patto di **citare questa fonte**.
