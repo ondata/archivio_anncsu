@@ -22,19 +22,24 @@ cat "${folder}"/tmp/lista_regioni.txt | while read -r regione; do
   mkdir -p "${folder}"/../rawdata/"${regione}"
 done
 
-# per ogni regione
+# crea file con tutti i comuni da scaricare
+:>"${folder}"/tmp/download_list.txt
 for lista_comuni in "${folder}"/tmp/comuni_*.jsonl; do
-  cat "${lista_comuni}" | while read -r comune; do
-    regione=$(echo "${comune}" | jq -r '.IDREGIONE')
-    codice_belfiore=$(echo "${comune}" | jq -r '.CODCATASTALE')
-
-    if [ ! -f "${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json ]; then
-      curl -X GET "https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?resource=odonimi&codicecomune=$codice_belfiore&denominazione=%20%20%20" >"${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json
-
-      # se il file è vuoto, cancella
-      if [ ! -s "${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json ]; then
-        rm "${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json
-      fi
-    fi
-  done
+  cat "${lista_comuni}" | jq -r '. | [.IDREGIONE, .CODCATASTALE] | @tsv' >>"${folder}"/tmp/download_list.txt
 done
+
+# scarica in parallelo
+cat "${folder}"/tmp/download_list.txt | parallel --colsep '\t' -j4 --bar '
+  regione={1}
+  codice_belfiore={2}
+  folder="'"${folder}"'"
+  
+  if [ ! -f "${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json ]; then
+    curl -sS -X GET "https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?resource=odonimi&codicecomune=$codice_belfiore&denominazione=%20%20%20" >"${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json
+
+    # se il file è vuoto, cancella
+    if [ ! -s "${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json ]; then
+      rm "${folder}"/../rawdata/"${regione}"/odonimi_${codice_belfiore}.json
+    fi
+  fi
+'
