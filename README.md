@@ -4,11 +4,11 @@
 
 Questo *repository* contiene l'archivio completo degli odonimi italiani - i "nomi delle strade" -  estratti dalle API dell'Archivio Nazionale dei Numeri Civici e delle Strade Urbane (ANNCSU), il 9 febbraio 2025.
 
-Nella prima versione di questo *repository*, i dati sono stati estratti puntando alle API ufficiali.
+Nella prima versione i dati sono stati estratti soltanto gli odonimi, puntando alle API ufficiali.
 
 Dal giorno 11 febbraio 2025, [**grazie a quanto pubblicato da @ivandortenzio**](https://github.com/ivandorte/anncsu_dump), abbiamo scoperto che sono disponibili anche i dati relativi ai **numeri civici** delle strade italiane. Tramite download in blocco.
 
-E successivamente abbiamo visto che [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df) sono presenti gli URL per scaricare in blocco tutti dati regionali e/o nazionali su odonimi e civici.
+E successivamente abbiamo visto che nel [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df) sono presenti gli URL per scaricare in blocco tutti i dati regionali e/o nazionali su odonimi e civici.
 
 
 URL utili:
