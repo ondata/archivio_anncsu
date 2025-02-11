@@ -13,6 +13,12 @@ URL utili:
 - URL API https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?help_show
 - mini tutorial con esempi di utilizzo <https://aborruso.github.io/posts/accesso_archivio_nazionale_numeri_civici_e_strade_urbane/>
 
+---
+
+**Questo dataset è stato pubblicato sul [catalogo nazionale dei dati aperti](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df), in cui sono presenti anche gli URL per scaricare in blocco i dati regionali e/o quelli nazionali.**
+
+---
+
 **NOTA BENE**: l'ANNCSU non ha ancora pubblicato una nota di rilascio, quindi questo archivio potrebbe non essere completo o aggiornato.
 
 ## Dati disponibili
