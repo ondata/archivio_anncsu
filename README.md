@@ -36,11 +36,4 @@ Il [`INDIR_ITA_20250128.parquet`](output/INDIR_ITA_20250128.parquet), scaricato 
 
 - la grandissima parte dei numeri civici **non ha coordinate associate**;
 - ci sono tanti civici con le coordinate **pari a `0,0`**;
-- ci sono tanti civici con coordinate **non in gradi decimali (come previsto da specifiche)**, ma in qualche sistema metrico.
-
-## Se usi questi dati
-
-I dati sono rilasciati con licenza [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it), quindi sei libero di utilizzarli per qualsiasi scopo, a patto di **citare questa fonte**.
-
-Quando li usi includi per favore la dicitura "dati estratti dall'[associazione onData](https://www.ondata.it/), a partire dalle [API dell'ANNCSU](https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?help_show)".
-
+- ci sono tanti civici con coordinate **non in gradi decimali (come previsto da specifiche)**, ma in qualche sistema metric
