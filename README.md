@@ -2,14 +2,12 @@
 
 # Stradario e indirizzario dell'Archivio Nazionale dei Numeri Civici e delle Strade
 
-Questo *repository* contiene l'archivio completo degli odonimi italiani - i "nomi delle strade" -  estratti dalle API dell'Archivio Nazionale dei Numeri Civici e delle Strade Urbane (ANNCSU), il 9 febbraio 2025.
+Questo *repository* contiene l'archivio completo degli odonimi italiani – i "nomi delle strade" – estratti dalle API dell'Archivio Nazionale dei Numeri Civici e delle Strade Urbane (ANNCSU) il 9 febbraio 2025.<br>
+Nella prima versione, sono stati estratti soltanto gli odonimi, puntando alle API ufficiali.
 
-Nella prima versione i dati sono stati estratti soltanto gli odonimi, puntando alle API ufficiali.
+Dall'11 febbraio 2025, [**grazie a quanto pubblicato da @ivandortenzio**](https://github.com/ivandorte/anncsu_dump), abbiamo scoperto che sono disponibili anche i dati relativi ai **numeri civici** delle strade italiane, scaricabili tramite download in blocco.
 
-Dal giorno 11 febbraio 2025, [**grazie a quanto pubblicato da @ivandortenzio**](https://github.com/ivandorte/anncsu_dump), abbiamo scoperto che sono disponibili anche i dati relativi ai **numeri civici** delle strade italiane. Tramite download in blocco.
-
-E successivamente abbiamo visto che nel [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df) sono presenti gli URL per scaricare in blocco tutti i dati regionali e/o nazionali su odonimi e civici.
-
+Successivamente, abbiamo verificato che nel [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df) sono presenti gli URL per scaricare in blocco tutti i dati regionali e/o nazionali sugli odonimi e i numeri civici.
 
 URL utili:
 
@@ -28,7 +26,7 @@ I dati sono disponibili nella cartella [`output`](output) e includono:
 - [`odonimi.parquet`](output/odonimi.parquet): File Parquet con tutti gli odonimi italiani, scaricato dalle API ANNCSU, ciclando per codice comunale;
 - [`odonimi.csv.gz`](output/odonimi.csv.gz): File CSV compresso con tutti gli odonimi italiani.
 
-Ma è caldamente consigliato di scaricare i dati direttamente dal [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df).
+Ma è **caldamente consigliato** di scaricare i dati direttamente dal [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df).
 
 ### Note sui numeri civici
 
