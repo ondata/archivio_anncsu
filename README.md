@@ -7,15 +7,13 @@ Nella prima versione, sono stati estratti soltanto gli odonimi, puntando alle AP
 
 Dall'11 febbraio 2025, [**grazie a quanto pubblicato da @ivandortenzio**](https://github.com/ivandorte/anncsu_dump), abbiamo scoperto che sono disponibili anche i dati relativi ai **numeri civici** delle strade italiane, scaricabili tramite download in blocco.
 
-Successivamente, abbiamo verificato che nel [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df) sono presenti gli URL per scaricare in blocco tutti i dati regionali e/o nazionali sugli odonimi e i numeri civici.
+Successivamente, abbiamo verificato che nel [**sito ufficiale**](https://www.anncsu.gov.it/it/consultazione-dellarchivio/open-data/) sono presenti gli URL per scaricare in blocco tutti i dati regionali e/o nazionali sugli odonimi e i numeri civici.
 
 URL utili:
 
 - URL API https://anncsu.open.agenziaentrate.gov.it/age-inspire/opendata/anncsu/querydata.php?help_show
 - mini tutorial con esempi di utilizzo <https://aborruso.github.io/posts/accesso_archivio_nazionale_numeri_civici_e_strade_urbane/>
 
-
-**NOTA BENE**: l'ANNCSU non ha ancora pubblicato una nota di rilascio.
 
 ## Dati disponibili
 
@@ -26,7 +24,7 @@ I dati sono disponibili nella cartella [`output`](output) e includono:
 - [`odonimi.parquet`](output/odonimi.parquet): File Parquet con tutti gli odonimi italiani, scaricato dalle API ANNCSU, ciclando per codice comunale;
 - [`odonimi.csv.gz`](output/odonimi.csv.gz): File CSV compresso con tutti gli odonimi italiani.
 
-Ma è **caldamente consigliato** di scaricare i dati direttamente dal [**catalogo nazionale dei dati aperti**](https://www.dati.gov.it/view-dataset/dataset?id=c71b8aca-da9f-486a-bd22-9b532accf7df).
+Ma è **caldamente consigliato** di scaricare i dati direttamente dal [**sito ufficiale**](https://www.anncsu.gov.it/it/consultazione-dellarchivio/open-data/).
 
 ### Note sui numeri civici
 
